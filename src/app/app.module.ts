@@ -22,7 +22,7 @@ import { AgmCoreModule } from '@agm/core';
         HttpClientModule,
         routing,
         AgmCoreModule.forRoot({
-            apiKey: ''
+            apiKey: 'AIzaSyCRNuFmsCpPALsIDokKc1NDIqyd83L-NDA'
         }) 
     ],
     declarations: [
