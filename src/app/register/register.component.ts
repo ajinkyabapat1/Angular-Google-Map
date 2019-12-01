@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
         this.date=this.datepipe.transform(new Date(),'HH:mm:ss')
-        console.log(this.date);
+      
         // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
