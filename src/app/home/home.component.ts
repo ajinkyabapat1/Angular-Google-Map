@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
    // zoom: number = 3;
     lat =17.387140;
      lng = 78.491684;
-     
+     previous:any=null;
     cities = [
 
         {lat: 17.387140, lng: 78.491684,  label: 'A',
@@ -39,7 +39,12 @@ export class HomeComponent implements OnInit, OnDestroy {
             this.currentUser = user;
         });
     }
-
+    clickedMarker(infowindow){
+        if(this.previous){
+            this.previous.close();
+        }
+        this.previous=infowindow;
+    }
     ngOnInit() {
         this.loadAllUsers();
     }

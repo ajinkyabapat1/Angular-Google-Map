@@ -1,64 +1,74 @@
 ﻿<div class="card text-center" style="width:max-content; margin-left:-170px ;margin-right:43px ">
         <div class="card-header" style="color: rgb(218, 214, 214);background-color: rgb(95, 2, 95);">
-                <h1>Welcome {{currentUser.firstName}}!... Please Select our Nearest Branch!!</h1>
+                <h4>Welcome {{currentUser.firstName}}!... Please Select our Nearest Branch!!</h4>
         </div>
-      
+
         <div class="card-body">
-               
-            <p class="card-text">
-               
-                  
-              
-            
-          <agm-map [latitude]="lat" [longitude]="lng" style="height: 600px; width:900px">
-                <agm-marker *ngFor="let m of cities; let i = index" [latitude]="m.lat"
-                 [longitude]="m.lng" [label]="m.label" [iconUrl]="m.url">
-            
-            
-                    <agm-info-window *ngIf="m.label=='A'">
-                        <b>Hyderbad</b>
-                        <br>
-                        <img src="/src/assets/hyd.jpg" style="width:300px; heiight:300px">
-                    </agm-info-window>
-            
-                    <agm-info-window *ngIf="m.label=='B'">
-                            <b>Warangal</b>
-                            <br>
-                            <img src="/src/assets/war.jpg" style="width:300px; heiight:300px">
-                    </agm-info-window>
-                    <agm-info-window *ngIf="m.label=='C'">
-                            <b>Bidar</b>
-                            <br>
-                            <img src="/src/assets/bidar.jpg" style="width:300px; heiight:300px">
-                    </agm-info-window>
-                    <agm-info-window *ngIf="m.label=='D'">
-                            <b>Gulbarga</b>
-                            <br>
-                            <img src="/src/assets/gul.jpeg" style="width:300px; heiight:300px">
-                    </agm-info-window>
-                </agm-marker>
-            
-               
-            </agm-map>
-        </p>
-<hr>
-<div style="color: white;background-color: rgb(153, 8, 153);"> You are at Hyderbad</div>
-            <h5 class="card-title">Total Registered Customers With Us: {{count}}</h5>
-            <br>
-            <ol style="padding-right: 434px; margin-left:250px">
-                  <li *ngFor="let user of users">
-                      <span style="color: blueviolet;font-size: 13px;">Mr/Mrs</span> <b style="color: blueviolet;font-size: 13px;">{{"  "+user.username}}</b>
-                      <span style="margin-left:30px">- <a (click)="deleteUser(user.id)" class="text-danger" style="font-size: 11px;">Delete</a></span>
-                  </li>
-             </ol>
+
+                <p class="card-text">
+
+
+
+
+                        <agm-map [latitude]="lat" [longitude]="lng" style="height: 600px; width:900px">
+                                <agm-marker *ngFor="let m of cities; let i = index" [latitude]="m.lat"
+                                        [longitude]="m.lng" [label]="m.label" [iconUrl]="m.url" (markerClick)="clickedMarker(infowindow)">
+
+
+                                        <agm-info-window *ngIf="m.label=='A'" #infowindow>
+                                                <b>Hyderbad</b>
+                                                <br>
+                                                <img src="/src/assets/hyd.jpg" style="width:300px; heiight:300px">
+                                        </agm-info-window>
+
+                                        <agm-info-window *ngIf="m.label=='B'" #infowindow>
+                                                <b>Warangal</b>
+                                                <br>
+                                                <img src="/src/assets/war.jpg" style="width:300px; heiight:300px">
+                                        </agm-info-window>
+                                        <agm-info-window *ngIf="m.label=='C'" #infowindow>
+                                                <b>Bidar</b>
+                                                <br>
+                                                <img src="/src/assets/bidar.jpg" style="width:300px; heiight:300px">
+                                        </agm-info-window>
+                                        <agm-info-window *ngIf="m.label=='D'" #infowindow>
+                                                <b>Gulbarga</b>
+                                                <br>
+                                                <img src="/src/assets/gul.jpeg" style="width:300px; heiight:300px">
+                                        </agm-info-window>
+                                </agm-marker>
+
+
+                        </agm-map>
+                </p>
+                <hr>
+                <div style="color: white;background-color: rgb(153, 8, 153);"> You are at Hyderbad</div>
+                <h5 class="card-title">Total Registered Customers With Us: {{count}}</h5>
+                <br>
+                
+                <table class="table">
+                        <thead class="thead-dark">
+                                <tr>
+                                        <th scope="col">Mr/Mrs</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Want to Delete?</th>
+                                </tr>
+                        </thead>
+                        <tr *ngFor="let user of users; let i=index">
+                                <td>Mr/Mrs</td>
+                                <td>{{user.username}}</td>
+                                <td><a (click)="deleteUser(user.id)" class="text-danger"
+                                                style="font-size: 11px;">Delete</a></td>
+                        </tr>
+                </table>
+
         </div>
         <div class="card-footer text-muted">
-         <div class="row">
-             <i class="material-icons" style="color: rgba(117, 3, 60, 0.678);">
-                email
-                </i>
-         <span>travel@xyz.com</span>
-         </div>
+                <div class="row">
+                        <i class="material-icons" style="color: rgba(117, 3, 60, 0.678);">
+                                email
+                        </i>
+                        <span>travel@xyz.com</span>
+                </div>
         </div>
-      </div>
-
+</div>
