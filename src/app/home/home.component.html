@@ -49,13 +49,13 @@
                 <table class="table">
                         <thead class="thead-dark">
                                 <tr>
-                                        <th scope="col">Mr/Mrs</th>
+                                        
                                         <th scope="col">Name</th>
                                         <th scope="col">Want to Delete?</th>
                                 </tr>
                         </thead>
                         <tr *ngFor="let user of users; let i=index">
-                                <td>Mr/Mrs</td>
+                               
                                 <td>{{user.username}}</td>
                                 <td><a (click)="deleteUser(user.id)" class="text-danger"
                                                 style="font-size: 11px;">Delete</a></td>
